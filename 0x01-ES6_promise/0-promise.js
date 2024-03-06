@@ -1,15 +1,5 @@
 export default function getResponseFromAPI() {
-  Promise.getResponseFromAPI = () => new Promise((resolve, reject) => {
-    const successfulRequest = Math.random() > 0.5;
+  Promise.getResponseFromAPI = () => new Promise(() => {
 
-    setTimeout(() => {
-      if (successfulRequest) {
-        const data = { example: 'Response data' };
-        resolve(data);
-      } else {
-        const error = new Error('Request Failed');
-        reject(error);
-      }
-    }, 1000);
   });
 }
