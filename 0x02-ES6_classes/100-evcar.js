@@ -11,7 +11,7 @@ export default class EVCar extends Car {
   }
 
   cloneCar() {
-    const clonedCar = new this.constructor(this._brand, this._motor, this._color);
+    const clonedCar = new Car(this._brand, this._motor, this._color);
     return clonedCar;
   }
 }
