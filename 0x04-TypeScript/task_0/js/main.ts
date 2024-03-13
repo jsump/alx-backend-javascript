@@ -1,5 +1,3 @@
-const { JSDOM } = require('jsdom');
-
 interface Student {
   firstName: string;
   lastName: string;
@@ -24,8 +22,8 @@ const student2: Student = {
 const studentsList: Student[] = [student1, student2];
 
 const renderTable = (students: Student[]) => {
-  const { document } = new JSDOM().window;
   const table = document.createElement('table');
+  
   const header = table.createTHead();
   const headerRow = header.insertRow(0);
   const headerCell1 = headerRow.insertCell(0);
