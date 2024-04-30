@@ -9,7 +9,6 @@
  * it displays the user's name immediately without prompting.
  */
 
-const process = require('process');
 const readline = require('readline');
 
 const rl = readline.createInterface({
@@ -24,38 +23,17 @@ console.log('Welcome to Holberton School, what is your name?');
 rl.on('line', (input) => {
   if (input === 'exit') {
     // When the user ends the program
-    console.log('This important software is now closing\n');
+    console.log('This important software is now closing');
     rl.close();
-  } else {
+  } else if (input.trim() !== '') {
     console.log(`Your name is: ${input}`);
   }
 });
 
 // When the interface is closed
 rl.on('close', () => {
-  console.log('This important software is now closing\n');
+  console.log('This important software is now closing');
+  process.exit();
 });
-
-// Handle command line arguments
-if (process.argv.length > 2) {
-  const name = process.argv[2];
-  console.log(`Your name is: ${name}\n`);
-  rl.close();
-}
-
-// Handle input from non-TTY
-if (!process.stdin.isTTY) {
-  let inputData = '';
-  process.stdin.setEncoding('utf-8');
-  process.stdin.on('data', (chunk) => {
-    inputData += chunk;
-  });
-
-  process.stdin.on('end', () => {
-    console.log('Welcome to Holberton School, what is your name?');
-    console.log(`Your name is: ${inputData.trim()}`);
-    console.log('This important software is now closing\n');
-  });
-}
 
 module.exports = rl;
