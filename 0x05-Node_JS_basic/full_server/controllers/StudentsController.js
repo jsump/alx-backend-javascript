@@ -14,7 +14,7 @@ class StudentsController {
           const students = data[field];
           const numStudents = students.length;
           const studentList = students.join(', ');
-          message += `Number of students in ${field}: ${numStudents}. List: ${studentList}`;
+          message += `Number of students in ${field}: ${numStudents}. List: ${studentList}\n`;
         });
 
         response.status(200).send(message);
