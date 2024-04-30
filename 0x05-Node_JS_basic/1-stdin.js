@@ -9,6 +9,7 @@
  * it displays the user's name immediately without prompting.
  */
 
+const process = require('process');
 const readline = require('readline');
 
 const rl = readline.createInterface({
