@@ -10,10 +10,12 @@
  */
 
 const readline = require('readline');
+const fs = require('fs')
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
+  terminal: !process.stdin.isTTY,
 });
 
 // Initial prompt display
@@ -21,21 +23,18 @@ console.log('Welcome to Holberton School, what is your name?');
 
 // Listen for user input
 rl.on('line', (input) => {
-  if (input === 'exit') {
-    // When the user ends the program
-    console.log('This important software is now closing');
-    rl.close();
-  } else if (input.trim() !== '') {
+  if (input.trim() !== '') {
     console.log(`Your name is: ${input}`);
     rl.close();
-    process.exit();
+    if (!process.stdin.isTTY) {
+      process.exit();
+    }
   }
 });
 
 // When the interface is closed
 rl.on('close', () => {
   console.log('This important software is now closing');
-  process.exit();
 });
 
 module.exports = rl;
