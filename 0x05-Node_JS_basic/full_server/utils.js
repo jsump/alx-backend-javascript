@@ -1,6 +1,4 @@
-import { Resolver } from 'dns';
 import fs from 'fs';
-import { resolve } from 'path';
 
 export function readDatabase(filePath) {
   return new Promise((resolve, reject) => {
@@ -8,19 +6,25 @@ export function readDatabase(filePath) {
       if (error) {
         reject(error);
       } else {
-        try {
-          const jsonData = JSON.parse(data);
-          const result = {};
+        const lines = data.split('\n');
+        const headers = lines[0].split(',').map((header) => header.trim());
+        const studentsData = lines.slice(1);
 
-          for (const field in jsonData) {
-            result[field] = jsonData[field].map(
-              (students) => students.firstname
-            );
+        const fieldIndexMap = {};
+
+        studentsData.forEach((student) => {
+          const fields = student.split(',');
+          const field = fields[headers.indexOf('field')].trim();
+          const firstName = fields[headers.indexOf('firstname')].trim();
+
+          if (!(field in fieldIndexMap)) {
+            fieldIndexMap[field] = [];
           }
-          resolve(result);
-        } catch (parseError) {
-          reject(parseError);
-        }
+
+          fieldIndexMap[field].push(firstName);
+        });
+
+        resolve(fieldIndexMap);
       }
     });
   });
