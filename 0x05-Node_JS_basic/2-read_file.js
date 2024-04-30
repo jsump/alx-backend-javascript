@@ -31,7 +31,7 @@ function countStudents(path) {
     });
   } catch (error) {
     if (error.code === 'ENOENT') {
-      throw new Error('Cannot load the database')
+      throw new Error('Cannot load the database');
     }
     console.error(error.message);
   }
