@@ -1,3 +1,14 @@
+/**
+ * This program interacts with the user through the command line.
+ * It prompts the user with a message "Welcome to Holberton School, what is your name?",
+ * reads the user's input, and displays "Your name is: INPUT" where INPUT is the user's name.
+ * The program continues to prompt the user until the user enters "exit".
+ * Upon receiving "exit", the program displays "This important software is now closing"
+ * and terminates.
+ * If the program receives input from a non-interactive source (e.g., piped input),
+ * it displays the user's name immediately without prompting.
+ */
+
 const readline = require('readline');
 
 const rl = readline.createInterface({
