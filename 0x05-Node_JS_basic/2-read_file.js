@@ -33,4 +33,4 @@ function countStudents(path) {
     console.error(error.message);
   }
 }
-module.exports = countStudents;
+module.exports = countStudents();

@@ -41,3 +41,4 @@ if (!process.stdin.isTTY) {
   });
 }
 
+module.exports = rl();
