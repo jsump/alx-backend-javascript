@@ -14,4 +14,4 @@ function createServer() {
   return app;
 }
 
-module.exports = createServer();
+module.exports = createServer;
