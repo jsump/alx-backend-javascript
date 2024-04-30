@@ -40,3 +40,4 @@ if (!process.stdin.isTTY) {
     console.log('This important software is now closing');
   });
 }
+
