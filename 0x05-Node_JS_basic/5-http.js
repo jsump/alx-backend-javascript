@@ -6,7 +6,7 @@ const app = http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('Hello Holberton School!');
   } else if (req.url === '/students') {
-    const database = process.argv[2];
+    const database = 'database.csv';
     fs.readFile(database, 'utf-8', (error, data) => {
       if (error) {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
