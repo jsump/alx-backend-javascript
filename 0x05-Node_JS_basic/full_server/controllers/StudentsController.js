@@ -1,12 +1,11 @@
-import e from 'express';
+import express from 'express';
 import { readDatabase } from '../utils';
 
 class StudentsController {
   static getAllStudents(request, response) {
     readDatabase('database.csv')
       .then((data) => {
-        const fields = Object.keys(data).sort((a, b) =>
-          a.localeCompare(b, undefined, { sensitivity: 'base' })
+        const fields = Object.keys(data).sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }),
         );
         let message = 'This is the list of our students\n';
 
