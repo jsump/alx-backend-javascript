@@ -15,8 +15,12 @@ rl.on('line', (input) => {
     console.log('This important software is now closing');
     rl.close();
   } else if (input.trim() !== '') {
-    console.log(`Your name is: ${input}`);
-    rl.close();
+    if (process.stdin.isTTY) {
+      console.log(`Your name is: ${input}`);
+    } else {
+      console.log(`Your name is: ${input.trim()}`);
+      rl.close();
+    }
   }
 });
 
