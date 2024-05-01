@@ -38,7 +38,7 @@ const app = http.createServer((req, res) => {
         res.write(`Number of students: ${studentsData.length}\n`);
 
         Object.entries(fieldIndexMap).forEach(([field, students]) => {
-          res.write(`Number of students in ${field}: ${students.length}. List: ${students.join(', ')}\n`);
+          res.write(`Number of students in ${field}: ${students.length}. List: ${students.join(', ')}`);
         });
 
         res.end();
