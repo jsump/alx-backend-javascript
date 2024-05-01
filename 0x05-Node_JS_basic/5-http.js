@@ -12,7 +12,7 @@ const app = http.createServer((req, res) => {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
         res.end('Internal Server Error');
       } else {
-        const lines = data.split('\n').filter((line) => line.trim() !=='');
+        const lines = data.split('\n').filter((line) => line.trim() !== '');
         const headers = lines[0].split(',').map((header) => header.trim());
         const studentsData = lines.slice(1);
 
@@ -23,14 +23,14 @@ const app = http.createServer((req, res) => {
 
         studentsData.forEach((student) => {
           const fields = student.split(',');
-	  if (fields.length === headers.length) {
+          if (fields.length === headers.length) {
             const field = fields[headers.indexOf('field')].trim();
             const firstName = fields[headers.indexOf('firstname')].trim();
 
             if (field in fieldIndexMap) {
               fieldIndexMap[field].push(firstName);
             }
-	  }
+          }
         });
 
         res.writeHead(200, { 'Content-Type': 'text/plain' });
