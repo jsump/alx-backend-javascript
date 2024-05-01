@@ -9,7 +9,7 @@ describe('calculateNumber', () => {
 
 	test('must correctly subtract two rounded numbers', () => {
                 const result = calculateNumber('SUBTRACT', 5, 2);
-                assert.strictEqual(result, 7);
+                assert.strictEqual(result, 3);
         });
 
 	test('must correctly divide two rounded numbers', () => {
