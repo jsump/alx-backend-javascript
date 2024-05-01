@@ -16,7 +16,7 @@ rl.on('line', (input) => {
     rl.close();
   } else if (input.trim() !== '') {
     console.log(`Your name is: ${input}`);
-    process.exit();
+    rl.close();
   }
 });
 
