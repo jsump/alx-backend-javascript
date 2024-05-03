@@ -1,5 +1,6 @@
-const expect = require('chai');
-const calculateNumber = require('./2-calcul.js');
+const { expect } = require('chai');
+const calculateNumber = require('./2-calcul_chai.js');
+
 
 describe('calculateNumber', () => {
 	describe('SUM', () => {
@@ -12,18 +13,18 @@ describe('calculateNumber', () => {
 	describe('SUBTRACT', () => {
 		it('must correctly subtract two rounded numbers', () => {
 			const result = calculateNumber('SUBTRACT', 5, 2);
-                	expect(result).to.equal(3);
-        	});
+			expect(result).to.equal(3);
+		});
 	});
 
 	describe('DIVIDE', () => {
 		it('must correctly divide two rounded numbers', () => {
-                	const result = calculateNumber('DIVIDE', 6, 3);
-                	expect(result).to.equal(2);
-        	});
+			const result = calculateNumber('DIVIDE', 6, 3);
+			expect(result).to.equal(2);
+		});
 		it('must return "Error" when dividing by zero', () => {
-                	const result = calculateNumber('DIVIDE', 4, 0);
-                	assert(result).to.equal('Error');
-        	});
+			const result = calculateNumber('DIVIDE', 4, 0);
+			expect(result).to.equal('Error');
+		});
 	});
 });

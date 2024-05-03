@@ -42,7 +42,7 @@ describe('calculateNumber', () => {
     it('must return the sum of -1.5 and -8.4, rounded to the next whole number', () => {
         assert.strictEqual(calculateNumber(-1.5, -8.4), -9);
     });
-    it('must return the sum of -5 and -2., rounded to the next whole number', () => {
+    it('must return the sum of -5 and -2, rounded to the next whole number', () => {
         assert.strictEqual(calculateNumber(-5, -2.3), -7);
     });
     it('must return the sum of -1 and -4, rounded to the next whole number', () => {
