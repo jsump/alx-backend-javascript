@@ -18,7 +18,7 @@ app.get("/cart/:id(\\d+)", (req, res) => {
     if (isNaN(id)) {
         res.status(400).json({ error: "Invalid cart ID. Must be a number." });
     } else {
-        res.json({ message: `Payment methods for cart ${id}` });
+        res.json(`Payment methods for cart ${id}`);
     }
 });
 
