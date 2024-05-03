@@ -4,7 +4,7 @@ const { rejects } = require("assert");
  * 
  * This file contains a function that takes an arg and returns a resolved promise
  * @param {boolean} success - argument to see whether API is successful
- * @returns {Promise} = REsolved promise to an object data is success is true
+ * @returns {Promise} a resolved promise to an object data is success is true
  */
 function getPaymentTokenFromAPI(success) {
     return new Promise((resolve, reject) => {
