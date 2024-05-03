@@ -10,7 +10,7 @@ describe("sendPaymentRequestToApi", () => {
     let calculateNumberStub;
     let consoleLogSpy
 
-    beforeEach(() = {
+    beforeEach(() => {
         // Stub Utils.calculateNumber to aleays return 120
         calculateNumberStub = sinon.stub(Utils, "calculateNumber").returns(120);
         // Spy on console log to verify the output
