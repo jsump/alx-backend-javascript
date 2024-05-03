@@ -22,7 +22,7 @@ describe('calculateNumber', () => {
     });
     describe('Test suite for second number rounded', () => {
         it('must return the sum of 1 and 2, rounded to the next whole number', () => {
-            assert.strictEqual(calculateNumber(1, 2), 3);
+            assert.strictEqual(calculateNumber(1.1, 2.2), 3);
         });
         it('must return the sum of -2.5, 3.1, rounded to the next whole number', () => {
             assert.strictEqual(calculateNumber(-2.5, 3.1), 1);
