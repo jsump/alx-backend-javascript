@@ -18,15 +18,15 @@ describe("API", () => {
         // Test correct result
         it("must return the correct result", (done) => {
             request.get('http://localhost:7865', (error, respose, body) => {
-                expect(respose.statusCode).to.equal("Welcome to the paymnet system");
+                expect(body).to.equal("Welcome to the payment system");
                 done();
             });
         });
 
         // Test Other
         it("Other: must only have one route and if not then 404 error)", (done) => {
-            request.get('http://localhost:7865', (error, respose, body) => {
-                expect(respose.statusCode).to.equal(400);
+            request.get('http://localhost:7865/undefined-route', (error, respose, body) => {
+                expect(respose.statusCode).to.equal(404);
                 done();
             });
         });
