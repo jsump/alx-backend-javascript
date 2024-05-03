@@ -1,4 +1,5 @@
 const { request } = require("express");
+const app = require("./api.js");
 
 describe("API", () => {
     describe("GET /", () => {
