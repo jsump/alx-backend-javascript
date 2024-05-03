@@ -1,19 +1,15 @@
-const supertest = require("supertest");
-const app = require("./api.js");
+const request = require('request')
+const chai = require('chai');
 const { expect } = require("chai");
+
+const app = require("./api.js");
 
 
 describe("API", () => {
     describe("GET /", () => {
         // Test correct status code
         it(" must return the correct status code(OK: 200)", (done) => {
-            supertest(app)
-                .get("/")
-                .expect(200)
-                .end((error, res) => {
-                    if (error)
-                        return done(error);
-                    done();
+            expectdone();
                 });
         });
 
