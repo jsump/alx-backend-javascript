@@ -11,16 +11,17 @@ app.get("/", (req, res) => {
     res.send("Welcome to the payment system");
 });
 
-//Endpoing for cart
+//Endpoint for cart
 app.get("/cart/:id(\\d+)", (req, res) => {
     const id = req.params.id;
 
     if (isNaN(id)) {
-        res.status(400).json({ error: "Invalid cart ID. Must be a number." });
+        res.status(404).json({ error: "Invalid cart ID. Must be a number." });
     } else {
         res.json(`Payment methods for cart ${id}`);
     }
 });
+
 
 // Listen and log
 app.listen(7865, () => {
