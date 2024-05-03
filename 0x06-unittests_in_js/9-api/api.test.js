@@ -40,5 +40,19 @@ describe("API", () => {
                 });
         });
     });
+    
+    describe("Cart Page", () => {
+        //Test correct status code when id is a number
+        it("must return correct status code when id is number", async () => {
+            const response = await supertest(app).get("/cart/123");
+            expect(response.statusCode).to.equal(200);
+        });
+
+        // Test for correct status code when id is npt a number
+        it("must return correct status code when id is not a number", async () => {
+            const response = await supertest(app).get("/cart/abc");
+            expect(response.statusCode).to.equal(404);
+        });
+    })
 
 });
