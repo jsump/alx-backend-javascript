@@ -1,5 +1,5 @@
 /**
- * This is the test file for 3-payment.js
+ * This is the test file for 4-payment.js
  * It tests whether the operations are correct
  */
 const sinon = require("sinon");
