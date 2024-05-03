@@ -1,5 +1,6 @@
 const supertest = require("supertest");
 const app = require("./api.js");
+const { expect } = require("chai");
 
 
 describe("API", () => {
