@@ -19,7 +19,7 @@ describe("sendPaymentRequestToApi", () => {
         // Verify that Utils.calculateNumber is called with correct args
         sinon.assert.calledWithExactly(calculateNumberSpy, "SUM", 100, 20);
         // //correct message
-        sinon.assert.calledWithExactly(consoleLogSpy, "The total is: 120");
+        sinon.assert.calledWithExactly(consoleLogSpy, "The total is: 10");
         
         // Restore stub and spy
         calculateNumberSpy.restore();
