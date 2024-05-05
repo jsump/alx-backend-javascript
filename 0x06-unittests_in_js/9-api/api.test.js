@@ -37,6 +37,7 @@ describe("API", () => {
         it("must return correct status code when id is number", (done) => {
             request.get('http://localhost:7865/cart/123', (error, response, body) => {
                 expect(response.statusCode).to.equal(200);
+                expect(body).to.equal("Payment methods for cart 123")
                 done();
             });
         });
