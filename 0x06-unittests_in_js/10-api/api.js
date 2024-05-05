@@ -7,7 +7,7 @@ const express = require("express");
 const app = express();
 
 // Return message from GRT route
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
     res.send("Welcome to the payment system");
 });
 
