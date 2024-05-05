@@ -2,16 +2,11 @@
  * This file cretes an instance that listens to a port
  */
 const express = require("express");
-const bodyParser = require("body-parser");
 
 // create an instance of express
 const app = express();
 
-//Middleware to parse JSON request body
-app.use(bodyParser.json());
-
-const port = 7865;
-// Return message from GET route
+// Return message from GRT route
 app.get("/", (req, res) => {
     res.send("Welcome to the payment system");
 });
@@ -26,7 +21,6 @@ app.get("/cart/:id(\\d+)", (req, res) => {
         res.send(`Payment methods for cart ${id}`);
     }
 });
-
 
 // Endpoint to get available payments
 app.get("/available_payments", (req, res) => {
@@ -44,10 +38,13 @@ app.post("/login", (req, res) => {
     res.send(`Welcome ${userName}`);
 });
 
-// Listen and log
-app.listen(port, () => {
-    console.log(`API available on localhost port ${port}`);
-});
-
 module.exports = app;
+
+// Listen and log
+if (require.main === module) {
+    app.listen(7865, () => {
+        console.log("API available on localhost port 7865");
+    });
+}
+
 
