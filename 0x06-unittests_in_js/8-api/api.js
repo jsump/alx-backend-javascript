@@ -11,9 +11,12 @@ app.get("/", (req, res) => {
     res.send("Welcome to the payment system");
 });
 
-// Listen and log
-app.listen(7865, () => {
-    console.log("API available on localhost port 7865");
-});
 
 module.exports = app;
+
+// Listen and log
+if (require.main === module) {
+    app.listen(7865, () => {
+        console.log("API available on localhost port 7865");
+    });
+}
