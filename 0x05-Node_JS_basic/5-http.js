@@ -10,7 +10,7 @@ const app = http.createServer((req, res) => {
     fs.readFile(database, 'utf-8', (error, data) => {
       if (error) {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('Cannot load the database');
+        res.end('This is the list of our students\nCannot load the database');
       } else {
         const lines = data.split('\n').filter((line) => line.trim() !== '');
         const headers = lines[0].split(',').map((header) => header.trim());
