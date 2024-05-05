@@ -43,21 +43,9 @@ app.post("/login", (req, res) => {
     res.send(`Welcome ${userName}`);
 });
 
+// Listen and log
+app.listen(7865, () => {
+    console.log("API available on localhost port 7865");
+});
 
 module.exports = app;
-
-// Listen and log
-if (require.main === module) {
-    const server = app.listen(7865, () => {
-        console.log("API available on localhost port 7865");
-    });
-
-    // Close the server when the process exits
-    process.on('SIGINT', () => {
-        console.log("Stopping server...");
-        server.close(() => {
-            console.log("Server stopped.");
-            process.exit(0);
-        });
-    });
-}
