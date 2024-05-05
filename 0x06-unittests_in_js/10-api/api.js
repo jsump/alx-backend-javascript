@@ -47,9 +47,8 @@ app.post('/login', (req, res) => {
 module.exports = app;
 
 // Listen and log
-if (require.main === module) {
-    const port = process.env.PORT || 7865;
-    app.listen(port, () => {
-        console.log(`API available on localhost port ${port}`);
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(7865, () => {
+        console.log("API available on localhost port 7865");
     });
 }
