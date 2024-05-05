@@ -28,7 +28,7 @@ app.get("/cart/:id(\\d+)", (req, res) => {
 
 
 // Endpoint to get available payments
-app.get('/available_payments', (req, res) => {
+app.get("/available_payments", (req, res) => {
     res.json({
         payment_methods: {
             credit_cards: true,
@@ -38,7 +38,7 @@ app.get('/available_payments', (req, res) => {
 });
 
 // Endpoint to welcome user
-app.post('/login', (req, res) => {
+app.post("/login", (req, res) => {
     const userName = req.body.userName;
     res.send(`Welcome ${userName}`);
 });
@@ -47,8 +47,17 @@ app.post('/login', (req, res) => {
 module.exports = app;
 
 // Listen and log
-if (process.env.NODE_ENV !== 'test') {
-    app.listen(7865, () => {
+if (require.main === module) {
+    const server = app.listen(7865, () => {
         console.log("API available on localhost port 7865");
+    });
+
+    // Close the server when the process exits
+    process.on('SIGINT', () => {
+        console.log("Stopping server...");
+        server.close(() => {
+            console.log("Server stopped.");
+            process.exit(0);
+        });
     });
 }
