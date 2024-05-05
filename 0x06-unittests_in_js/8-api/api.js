@@ -16,9 +16,4 @@ app.listen(7865, () => {
     console.log("API available on localhost port 7865");
 });
 
-// Error
-app.use((req, res) => {
-    res.status(404).send("404");
-});
-
 module.exports = app;
