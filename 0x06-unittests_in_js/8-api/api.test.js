@@ -5,7 +5,7 @@ const { expect } = require("chai");
 const app = require("./api.js");
 
 
-describe("API", () => {
+describe("Index page", () => {
     // Test correct status code
     it("must return the correct status code(OK: 200)", (done) => {
         request.get('http://localhost:7865', (error, respose, body) => {
