@@ -12,14 +12,8 @@ app.get("/", (req, res) => {
 });
 
 //Endpoint for cart
-app.get("/cart/:id(\\d+)", (req, res) => {
-    const id = req.params.id;
-
-    if (isNaN(id)) {
-        res.status(404).json({ error: "Invalid cart ID. Must be a number." });
-    } else {
-        res.send(`Payment methods for cart ${id}`);
-    }
+app.get('/cart/:cartId([0-9]*)', function (request, response) {
+    response.send(`Payment methods for cart ${request.params.cartId}`);
 });
 
 module.exports = app;
