@@ -52,10 +52,13 @@ describe("API", () => {
     });
 
     describe('Login endpoint', () => {
-        it("must return a welcome message withthe username", (done) => {
-            request.post('http://localhost:7865/login', { json: { userName: "John" } }, (error, response, body) => {
+        it("must return a welcome message with the username", (done) => {
+            request.post('http://localhost:7865/login', {
+                json: {
+                    userName: "John"}
+                }, (error, response, body) => {
                 expect(response.statusCode).to.equal(200);
-                expect(response.body).to.equal("Welcome John");
+                expect(body).to.equal("Welcome John");
                 done();
             });
 
