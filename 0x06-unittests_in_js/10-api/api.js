@@ -22,7 +22,7 @@ app.get("/cart/:id(\\d+)", (req, res) => {
     if (isNaN(id)) {
         res.status(404).json({ error: "Invalid cart ID. Must be a number." });
     } else {
-        res.json(`Payment methods for cart ${id}`);
+        res.send(`Payment methods for cart ${id}`);
     }
 });
 
@@ -44,14 +44,11 @@ app.post('/login', (req, res) => {
 });
 
 
-// Listen and log
-app.listen(7865, () => {
-    console.log("API available on localhost port 7865");
-});
-
-// Error
-app.use((req, res) => {
-    res.status(404).send("404");
-});
-
 module.exports = app;
+
+// Listen and log
+if (require.main === module) {
+    app.listen(7865, () => {
+        console.log("API available on localhost port 7865");
+    });
+}
