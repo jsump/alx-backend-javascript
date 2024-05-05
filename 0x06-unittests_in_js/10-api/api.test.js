@@ -1,3 +1,4 @@
+process.env.PORT = 7866;
 const request = require('request')
 const chai = require('chai');
 const { expect } = require("chai");
