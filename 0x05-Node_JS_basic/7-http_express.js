@@ -24,13 +24,11 @@ app.get('/students', (req, res) => {
 
       studentsData.forEach((student) => {
         const fields = student.split(',');
-        if (fields.length === headers.length) {
-          const field = fields[headers.indexOf('field')].trim();
-          const firstName = fields[headers.indexOf('firstname')].trim();
+        const field = fields[headers.indexOf('field')].trim();
+        const firstName = fields[headers.indexOf('firstname')].trim();
 
-          if (field in fieldIndexMap) {
-            fieldIndexMap[field].push(firstName);
-          }
+        if (field in fieldIndexMap) {
+          fieldIndexMap[field].push(firstName);
         }
       });
 
@@ -45,7 +43,6 @@ app.get('/students', (req, res) => {
     }
   });
 });
-
 
 // Start the server
 const PORT = 1245;
