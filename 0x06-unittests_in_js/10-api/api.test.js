@@ -50,4 +50,30 @@ describe("API", () => {
             });
         })
     });
+
+    describe('Login endpoint', () => {
+        it("must return a welcome message withthe username", (done) => {
+            request.post('http://localhost:7865/login', { json: { userName: "John" } }, (error, response, body) => {
+                expect(response.statusCode).to.equal(200);
+                expect(response.body).to.equal("Welcome John");
+                done();
+            });
+
+        });
+    });
+    
+    describe('Get available payment methods', () => {
+        it("must return an object with available payment methods", (done) => {
+            request.get('http://localhost:7865/available_payments', (error, response, body) => {
+                expect(response.statusCode).to.equal(200);
+                expect(JSON.parse(body)).to.eql({
+                    payment_methods: {
+                        credit_cards: true,
+                        paypal: false
+                    }
+                });
+                done();
+            });
+        });
+    });
 });
