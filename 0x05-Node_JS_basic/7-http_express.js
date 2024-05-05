@@ -11,9 +11,10 @@ app.get('/students', (req, res) => {
   const database = process.argv[2];
   fs.readFile(database, 'utf-8', (error, data) => {
     if (error) {
-      res.status(500).send('Internal Server Error');
+      res.writeHead(500, { 'Content-Type': 'text/plain' });
+      res.end('This is the list of our students\nCannot load the database');
     } else {
-      const lines = data.split('\n');
+      const lines = data.split('\n').filter((line) => line.trim() !== '');
       const headers = lines[0].split(',').map((header) => header.trim());
       const studentsData = lines.slice(1);
 
@@ -24,22 +25,25 @@ app.get('/students', (req, res) => {
 
       studentsData.forEach((student) => {
         const fields = student.split(',');
-        const field = fields[headers.indexOf('field')].trim();
-        const firstName = fields[headers.indexOf('firstname')].trim();
+        if (fields.length === headers.length) {
+          const field = fields[headers.indexOf('field')].trim();
+          const firstName = fields[headers.indexOf('firstname')].trim();
 
-        if (field in fieldIndexMap) {
-          fieldIndexMap[field].push(firstName);
+          if (field in fieldIndexMap) {
+            fieldIndexMap[field].push(firstName);
+          }
         }
       });
 
-      let response = 'This is the list of our students\n';
-      response += `Number of students: ${studentsData.length}\n`;
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
+      res.write('This is the list of our students\n');
+      res.write(`Number of students: ${studentsData.length}\n`);
 
       Object.entries(fieldIndexMap).forEach(([field, students]) => {
-        response += `Number of students in ${field}: ${students.length}. List: ${students.join(', ')}\n`;
+        res.write(`Number of students in ${field}: ${students.length}. List: ${students.join(', ')}\n`);
       });
-      res.setHeader('Content-Type', 'text/plain');
-      res.send(response);
+
+      res.end();
     }
   });
 });
