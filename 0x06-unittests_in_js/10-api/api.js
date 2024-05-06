@@ -10,7 +10,7 @@ const app = express();
 //Middleware to parse JSON request body
 app.use(bodyParser.json());
 
-const port = 7865;
+
 // Return message from GET route
 app.get("/", (req, res) => {
     res.send("Welcome to the payment system");
@@ -53,7 +53,8 @@ module.exports = app;
 
 // Listen and log
 if (require.main === module) {
+    const port = 7865;
     app.listen(7865, () => {
-        console.log("API available on localhost port 7865");
+        console.log(`API available on localhost port ${port}`);
     });
 }
